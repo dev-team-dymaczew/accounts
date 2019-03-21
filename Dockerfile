@@ -13,9 +13,4 @@ RUN installUtility install --acceptLicense defaultServer
 
 # Upgrade to production license if URL to JAR provided
 ARG LICENSE_JAR_URL
-RUN \ 
-  if [ $LICENSE_JAR_URL ]; then \
-    wget $LICENSE_JAR_URL -O /tmp/license.jar \
-    && java -jar /tmp/license.jar -acceptLicense /opt/ibm \
-    && rm /tmp/license.jar; \
-  fi
+RUN if [ $LICENSE_JAR_URL ]; then wget $LICENSE_JAR_URL -O /tmp/license.jar && java -jar /tmp/license.jar -acceptLicense /opt/ibm && rm /tmp/license.jar; fi
